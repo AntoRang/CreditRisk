@@ -1,0 +1,178 @@
+<hr>
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+  <!-- Nombre -->
+  <div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Full name</label>
+      <div class="col-8">
+        <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('nombre').valid }"
+        type="text"
+        placeholder="Nombre"
+        formControlName="nombre">
+        <div *ngIf="formulario.controls['nombre'].errors?.required"
+              class="form-control-feedback">
+              Por favor indique el nombre.
+        </div>
+        <div *ngIf="formulario.controls['nombre'].errors?.minlength"
+              class="form-control-feedback">
+              El nombre debe contener minimo 8 caracteres.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Age -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Age</label>
+    <div class="col-8">
+      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('age').valid }"
+      type="number"
+      placeholder="Age"
+      formControlName="age">
+      <div *ngIf="formulario.controls['age'].errors?.required"
+            class="form-control-feedback">
+            Por favor indique la edad.
+      </div>
+    </div>
+  </div>
+  <!-- Sexo -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Sex</label>
+
+    <mat-form-field appearance="fill" class="col-8 col-form-label">
+      <mat-label>Sex</mat-label>
+      <mat-select formControlName="sex" placeholder="- -" required>
+        <mat-option>--</mat-option>
+        <mat-option value="Female">Female</mat-option>
+        <mat-option value="Male">Male</mat-option>
+      </mat-select>
+      <div *ngIf="formulario.controls['sex'].errors?.required"
+            class="form-control-feedback">
+            Please complete filling sex.
+      </div>
+    </mat-form-field>
+    
+  </div>
+  <!-- Housing -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Housing</label>
+
+    <mat-form-field appearance="fill" class="col-8 col-form-label">
+      <mat-label>Husing</mat-label>
+      <mat-select formControlName="housing" placeholder="- -" required>
+        <mat-option>--</mat-option>
+        <mat-option value="Own">Own</mat-option>
+        <mat-option value="Free">Free</mat-option>
+        <mat-option value="Rent">Rent</mat-option>
+      </mat-select>
+      <div *ngIf="formulario.controls['housing'].errors?.required"
+            class="form-control-feedback">
+            Please complete filling housing.
+      </div>
+    </mat-form-field>
+    
+  </div>
+  <!-- Saving account -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Saving account</label>
+    <mat-form-field appearance="fill" class="col-8 col-form-label">
+      <mat-label>Saving account</mat-label>
+      <mat-select formControlName="saving_account" placeholder="- -" required>
+        <mat-option>--</mat-option>
+        <mat-option value="unknown">Unknown</mat-option>
+        <mat-option value="little">Little</mat-option>
+        <mat-option value="moderate">Moderate</mat-option>
+        <mat-option value="quite rich">Quite rich</mat-option>
+        <mat-option value="rich">Rich</mat-option>
+      </mat-select>
+      
+      <div *ngIf="formulario.controls['saving_account'].errors?.required"
+            class="form-control-feedback">
+            Please complete filling saving account.
+      </div>
+    </mat-form-field>
+  </div>
+  <!-- Checking accounts -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Checking accounts</label>
+    <mat-form-field appearance="fill" class="col-8 col-form-label">
+      <mat-label>Checking accounts</mat-label>
+      <mat-select formControlName="checking_accounts" placeholder="- -" required>
+        <mat-option>--</mat-option>
+        <mat-option value="unknown">Unknown</mat-option>
+        <mat-option value="little">Little</mat-option>
+        <mat-option value="moderate">Moderate</mat-option>
+        <mat-option value="rich">Rich</mat-option>
+      </mat-select>
+      
+      <div *ngIf="formulario.controls['checking_accounts'].errors?.required"
+            class="form-control-feedback">
+            Please complete filling checking accounts.
+      </div>
+    </mat-form-field>
+  </div>
+  <!-- Duration -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Credit duration (weeks)</label>
+    <div class="col-8">
+      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('duration').valid }"
+      type="number"
+      placeholder="Credit duration"
+      formControlName="duration">
+      <div *ngIf="formulario.controls['duration'].errors?.required"
+            class="form-control-feedback">
+            Please complete filling credit duration.
+      </div>
+    </div>
+  </div>
+  <!-- Purpose -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Purpose</label>
+    <mat-form-field appearance="fill" class="col-8 col-form-label">
+      <mat-label>Purpose</mat-label>
+      <mat-select formControlName="purpose" placeholder="- -" required>
+        <mat-option>--</mat-option>
+        <mat-option value="car">Car</mat-option>
+        <mat-option value="radio/TV">Radio / TV</mat-option>
+        <mat-option value="furniture/equipment">Furniture / Equipment</mat-option>
+        <mat-option value="business">Business</mat-option>
+        <mat-option value="education">Education</mat-option>
+        <mat-option value="repairs">Repairs</mat-option>
+        <mat-option value="domestic appliances">Domestic Appliances</mat-option>
+        <mat-option value="vacation/others">Vacation / Others</mat-option>
+      </mat-select>
+    
+      <div *ngIf="formulario.controls['purpose'].errors?.required"
+            class="form-control-feedback">
+            Please complete filling purpose.
+      </div>
+    </mat-form-field>
+      
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo Electrónico</label>
+    <div class="col-md-8">
+      <input class="form-control"  [ngClass]="{ 'is-invalid': !formulario.get('correoElectronico').valid }"
+      type="email"
+      placeholder="Correo Electrónico"
+      formControlName="correoElectronico">
+      <div *ngIf="formulario.controls['correoElectronico'].errors?.required"
+            class="form-control-feedback">
+            Por favor indique correo electronico
+      </div>
+      <div *ngIf="formulario.controls['correoElectronico'].errors?.pattern"
+            class="form-control-feedback">
+            Debe de seguir un patron especifico
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+<hr>
