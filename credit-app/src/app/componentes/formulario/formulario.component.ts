@@ -20,7 +20,7 @@ export class FormularioComponent implements OnInit {
       'checking_accounts': new FormControl('', [Validators.required]),
       'duration': new FormControl('', [Validators.required]),
       'purpose': new FormControl('', [Validators.required]),
-      'correoElectronico': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._-]+@[a-z0-9.-]+\.[a-z(2,3)]$")])
+      'correoElectronico': new FormControl('', [Validators.required, Validators.email])
     });
    }
 
