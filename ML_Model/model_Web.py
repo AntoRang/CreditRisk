@@ -3,7 +3,6 @@ import flask
 import numpy as np
 import joblib
 
-
 app= flask.Flask(__name__)
 
 @app.route('/prueba/<dato>',methods=['POST'])
