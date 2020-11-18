@@ -101,7 +101,6 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from sklearn import preprocessing
-
 # from google.colab import drive
 import matplotlib.pyplot as plt
 from sklearn import metrics as sk_metrics
@@ -128,7 +127,6 @@ def make_mc(target, model, name):
     plt.yticks(fontsize=16)
     plt.title(name)
 
-#Función para transformar de parámetros nominales/ordinales a valores numéricos
 #Función para transformar de parámetros nominales/ordinales a valores numéricos
 def categorize(data):
     df = data.copy()
@@ -171,14 +169,14 @@ def z_score(feature):
     return new_feature
 
 # Función para normalizar campos númericos con la estandarización simple feature scaling 
-def simple_feature_scaling(feature):
-    new_feature = feature / feature.max()
-    return new_feature
+# def simple_feature_scaling(feature):
+#     new_feature = feature / feature.max()
+#     return new_feature
 
-# Función para normalizar campos númericos con la estandarización min-max
-def simple_feature_scaling(feature):
-    new_feature = (feature - feature.min()) / (feature.max() - feature.min())
-    return new_feature
+# # Función para normalizar campos númericos con la estandarización min-max
+# def simple_feature_scaling(feature):
+#     new_feature = (feature - feature.min()) / (feature.max() - feature.min())
+#     return new_feature
 
 """###3.2. Extracción de Datos"""
 
@@ -195,7 +193,6 @@ df = pd.read_csv(path, na_values =['NA'])
 
 
 """###3.3. Modificación de los Datos"""
-
 #Eliminar la columna 'Unamed' que no incluye información
 df.drop(['Unnamed: 0'], axis=1, inplace=True)
 
@@ -283,7 +280,7 @@ df["Saving accounts"] = df["Saving accounts"].fillna("n/a")
 
 #Observar el rango de cada clase de los parámetros: 'Credit amount category', 'Age category', 'Duration category'
 #Credit amount category
-clases_credito= pd.cut(df["Credit amount"], bins=len(tipo_riesgo)).value_counts()
+# clases_credito= pd.cut(df["Credit amount"], bins=len(tipo_riesgo)).value_counts()
 # clases_credito
 
 #Age category
@@ -302,19 +299,9 @@ clases_credito= pd.cut(df["Credit amount"], bins=len(tipo_riesgo)).value_counts(
 #Conversión a valores numéricos
 df = categorize(df)
 
-
 #Normalizar valores con z-score
-df['Age'] = z_score(df['Age'])
-df['Sex'] = z_score(df['Sex'])
-df['Job'] = z_score(df['Job'])
-df['Housing'] = z_score(df['Housing'])
-df['Saving accounts'] = z_score(df['Saving accounts'])
-df['Checking account'] = z_score(df['Checking account'])
-df['Credit amount'] = z_score(df['Credit amount'])
-df['Duration'] = z_score(df['Duration'])
-df['Purpose'] = z_score(df['Purpose'])
-df['Risk'] = z_score(df['Risk'])
-
+for column in (df.columns):
+  if column != 'Credit category': df[column]= z_score(df[column])
 
 """###3.6. Visualización de Parámetros Innescesarios"""
 
@@ -329,11 +316,10 @@ df['Risk'] = z_score(df['Risk'])
 
 """###3.7. Eliminación de Outliers"""
 
-
 #Eliminación de outliers en los parámetros pertinentes: 'Age' & 'Credit amount'
-df = remove_outliers(df=df, column='Age' , min = df["Age"].min(), max=65)
-df = remove_outliers(df=df, column='Duration', min = df["Duration"].min(), max=60)
-df = remove_outliers(df=df, column='Credit amount' , min= df["Credit amount"].min(), max=17000)
+df = remove_outliers(df=df, column='Age' , min = df["Age"].min(), max=3)
+df = remove_outliers(df=df, column='Duration', min = df["Duration"].min(), max=4)
+df = remove_outliers(df=df, column='Credit amount' , min= df["Credit amount"].min(), max=5) 
 
 
 #Reordenar los índices a partir de 1
@@ -343,7 +329,7 @@ df = df.set_index(orden_id)
 
 """###3.8. Datos Finales"""
 
-#Eliminación de columnas: 'Job', 'Age', 'Duration', Risk' y 'Credit amount'
+#Eliminación de columnas: 'Risk' y 'Credit amount'
 df = df.drop(columns=['Risk', 'Credit amount'])
 
 df.to_csv('../Dataset/CreditRiskETL.csv')
