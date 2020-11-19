@@ -1,12 +1,14 @@
 
 """
     This code help us to train an publish our ML model
-    The best algorithm found was Decision Tree with a 85-15 split
+    The best algorithm found was Decision Tree with a 85-15 data split
     A GridSearch was applied in order to find the best solution
-    The two paramerts to consider were: Accuracy and AUC
+    The two target paramerts were: Accuracy and AUC
     
     At the end of the code the rest of the algorithms trained but not choosen 
 """
+
+#Libraries
 import pandas as pd
 import numpy as np
 from sklearn.metrics import roc_auc_score
