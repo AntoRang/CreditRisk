@@ -68,7 +68,17 @@ df['Credit category']= pd.Series.to_frame(credit)
 
 #Bins for "Credit ammount"
 bins_credit = np.linspace(min(df["Credit amount"]), max(df["Credit amount"]), len(risk_type)+1)
-print(bins_credit)
+credit_max = {}
+credit_min = {}
+credit_type ={}
+i=0
+for risk in risk_type:
+    credit_type[i] = risk
+    credit_min[risk] = bins_credit[i]
+    i += 1
+    credit_max[risk] = bins_credit[i]
+credit={"type": credit_type ,"max":credit_max, "min": credit_min}
+
 
 #Adding 'n/a' category to fill 'Checking account' and 'Saving accounts'
 df["Checking account"] = df["Checking account"].fillna("n/a")
@@ -83,7 +93,7 @@ std={}
 for column in (df.columns):
     mean[column] = df[column].mean()
     std[column] =df[column].std()
-params={"means":mean,"stds":std}
+params={"means":mean,"stds":std, "credit":credit}
 
 #Standarizing data
 for column in (df.columns):

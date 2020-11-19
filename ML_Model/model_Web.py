@@ -29,10 +29,6 @@ def categorize(df):
                                       "domestic appliances", "vacation/others"],[0,1,2,3,4,5,6,7]))
     return(df)
 
-# #Fuction for generating the final output
-# def risk_output(pred):
-#     if pred=
-
 #Function standarizing data with "z-score"
 def z_score(feature,mean,std):
     new_feature = (feature - mean) / std
@@ -64,8 +60,9 @@ def Home(data):
     pred = (model.predict(test.reshape(1,-1)))[0]
     int_pred = int(pred)
     #Generating the final output
-    # risk = 
-    
+    risk_type = params["type"][int_pred] 
+    min_credit = params['min'][risk_type]
+    max_credit = params['max'][risk_type]
     #Returning the result
-    return flask.jsonify({'Risk':int_pred})
+    return flask.jsonify({'Risk':risk_type, 'Min. ammount': min_credit, 'Max. ammount': max_credit})
 

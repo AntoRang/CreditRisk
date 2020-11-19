@@ -12,7 +12,6 @@
 import pandas as pd
 import numpy as np
 from sklearn.metrics import roc_auc_score
-from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
@@ -64,7 +63,6 @@ job.dump(dt, 'model_dt.joblib')
 
 
 
-
 """"Standarization no required because data included z-score"""
 #from sklearn.preprocessing import StandardScaler
 #StandardScaler
@@ -76,6 +74,7 @@ job.dump(dt, 'model_dt.joblib')
 
 """Other algorithms with lower ACU"""
 #Libraries
+# from sklearn.metrics import confusion_matrix
 # from sklearn.linear_model import LogisticRegression
 # from sklearn.ensemble import RandomForestClassifier
 # from sklearn.neural_network import MLPClassifier
