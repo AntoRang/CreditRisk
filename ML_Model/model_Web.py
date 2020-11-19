@@ -64,7 +64,7 @@ def Home(data):
     pred = (model.predict(test.reshape(1,-1)))[0]
     int_pred = int(pred)
     #Generating the final output
-    risk = 
+    # risk = 
     
     #Returning the result
     return flask.jsonify({'Risk':int_pred})
