@@ -5,11 +5,11 @@ import joblib
 
 app= flask.Flask(__name__)
 
-@app.route('/<dato>',methods=['POST'])
-def Home(dato):
+@app.route('/<data>',methods=['POST'])
+def Home(data):
     cont=flask.request.json
     print(cont)
-    test = np.array([2.67716444, 0.66994484, 1.67683077, -0.13364358, -0.70614255,  1.8910083, 0.75438593, -1.45490372])
+    test = np.array([-0.39963189,0.66994484,0.58531017,0.83775605,1.04384958,-1.23585947,1.02436272])
     model = joblib.load('model_dt.joblib')
     ans = (model.predict(test.reshape(1,-1)))[0]
     int_ans= int(ans)
