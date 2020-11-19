@@ -79,7 +79,6 @@ for risk in risk_type:
     credit_max[risk] = bins_credit[i]
 credit={"type": credit_type ,"max":credit_max, "min": credit_min}
 
-
 #Adding 'n/a' category to fill 'Checking account' and 'Saving accounts'
 df["Checking account"] = df["Checking account"].fillna("n/a")
 df["Saving accounts"] = df["Saving accounts"].fillna("n/a")

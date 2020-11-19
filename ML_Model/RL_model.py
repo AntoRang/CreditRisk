@@ -62,7 +62,6 @@ print(f"Predition:{prediction}")
 job.dump(dt, 'model_dt.joblib')
 
 
-
 """"Standarization no required because data included z-score"""
 #from sklearn.preprocessing import StandardScaler
 #StandardScaler

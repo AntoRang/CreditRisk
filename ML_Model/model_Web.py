@@ -9,7 +9,6 @@
 
 #Libraries
 import flask
-import numpy as np
 import pandas as pd
 import joblib
 
@@ -60,9 +59,9 @@ def Home(data):
     pred = (model.predict(test.reshape(1,-1)))[0]
     int_pred = int(pred)
     #Generating the final output
-    risk_type = params["type"][int_pred] 
-    min_credit = params['min'][risk_type]
-    max_credit = params['max'][risk_type]
+    risk_type = params["credit"]["type"][int_pred] 
+    min_credit = params["credit"]['min'][risk_type]
+    max_credit = params["credit"]['max'][risk_type]
     #Returning the result
     return flask.jsonify({'Risk':risk_type, 'Min. ammount': min_credit, 'Max. ammount': max_credit})
 
