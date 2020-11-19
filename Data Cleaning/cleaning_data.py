@@ -104,6 +104,7 @@ from sklearn.preprocessing import StandardScaler
 # from google.colab import drive
 import matplotlib.pyplot as plt
 from sklearn import metrics as sk_metrics
+import joblib as job
 # %matplotlib inline
 
 #Función para hacer la matriz de confusión, se necesita el atributo de salida, el modelo de GridSearch y el nombre del modelo.
@@ -176,6 +177,7 @@ def remove_outliers(df, column , min, max):
 def z_score(feature):
     new_feature = (feature - feature.mean()) / feature.std()
     return new_feature
+
 
 # Función para normalizar campos númericos con la estandarización simple feature scaling 
 # def simple_feature_scaling(feature):
@@ -308,9 +310,18 @@ df["Saving accounts"] = df["Saving accounts"].fillna("n/a")
 #Conversión a valores numéricos
 df = categorize(df)
 
+#Important parameters
+mean={}
+std={}
+for column in (df.columns):
+    mean[column] = df[column].mean()
+    std[column] =df[column].std()
+params={"means":mean,"stds":std}
+
 #Normalizar valores con z-score
 for column in (df.columns):
   if column != 'Credit category': df[column]= z_score(df[column])
+  
 
 """###3.6. Visualización de Parámetros Innescesarios"""
 
@@ -342,3 +353,5 @@ df = df.set_index(orden_id)
 df = df.drop(columns=['Risk', 'Credit amount'])
 
 df.to_csv('../Dataset/CreditRiskETL.csv')
+
+job.dump(params, '../ML_Model/params_dt.joblib')
