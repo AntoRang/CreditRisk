@@ -24,11 +24,11 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Age</label>
     <div class="col-8">
-      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('age').valid }"
+      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('Age').valid }"
       type="number"
       placeholder="Age"
-      formControlName="age">
-      <div *ngIf="formulario.controls['age'].errors?.required"
+      formControlName="Age">
+      <div *ngIf="formulario.controls['Age'].errors?.required"
             class="form-control-feedback">
             Por favor indique la edad.
       </div>
@@ -40,12 +40,12 @@
 
     <mat-form-field appearance="fill" class="col-8 col-form-label">
       <mat-label>Sex</mat-label>
-      <mat-select formControlName="sex" placeholder="- -" required>
+      <mat-select formControlName="Sex" placeholder="- -" required>
         <mat-option>--</mat-option>
-        <mat-option value="Female">Female</mat-option>
-        <mat-option value="Male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="male">Male</mat-option>
       </mat-select>
-      <div *ngIf="formulario.controls['sex'].errors?.required"
+      <div *ngIf="formulario.controls['Sex'].errors?.required"
             class="form-control-feedback">
             Please complete filling sex.
       </div>
@@ -58,13 +58,13 @@
 
     <mat-form-field appearance="fill" class="col-8 col-form-label">
       <mat-label>Husing</mat-label>
-      <mat-select formControlName="housing" placeholder="- -" required>
+      <mat-select formControlName="Housing" placeholder="- -" required>
         <mat-option>--</mat-option>
-        <mat-option value="Own">Own</mat-option>
-        <mat-option value="Free">Free</mat-option>
-        <mat-option value="Rent">Rent</mat-option>
+        <mat-option value="own">Own</mat-option>
+        <mat-option value="free">Free</mat-option>
+        <mat-option value="rent">Rent</mat-option>
       </mat-select>
-      <div *ngIf="formulario.controls['housing'].errors?.required"
+      <div *ngIf="formulario.controls['Housing'].errors?.required"
             class="form-control-feedback">
             Please complete filling housing.
       </div>
@@ -73,40 +73,40 @@
   </div>
   <!-- Saving account -->
   <div class="form-group row">
-    <label class="col-2 col-form-label">Saving account</label>
+    <label class="col-2 col-form-label">Saving accounts</label>
     <mat-form-field appearance="fill" class="col-8 col-form-label">
-      <mat-label>Saving account</mat-label>
-      <mat-select formControlName="saving_account" placeholder="- -" required>
+      <mat-label>Saving accounts</mat-label>
+      <mat-select formControlName="Saving accounts" placeholder="- -" required>
         <mat-option>--</mat-option>
-        <mat-option value="unknown">Unknown</mat-option>
+        <mat-option value="n/a">Unknown</mat-option>
         <mat-option value="little">Little</mat-option>
         <mat-option value="moderate">Moderate</mat-option>
         <mat-option value="quite rich">Quite rich</mat-option>
         <mat-option value="rich">Rich</mat-option>
       </mat-select>
       
-      <div *ngIf="formulario.controls['saving_account'].errors?.required"
+      <div *ngIf="formulario.controls['Saving accounts'].errors?.required"
             class="form-control-feedback">
-            Please complete filling saving account.
+            Please complete filling saving accounts.
       </div>
     </mat-form-field>
   </div>
-  <!-- Checking accounts -->
+  <!-- Checking account -->
   <div class="form-group row">
-    <label class="col-2 col-form-label">Checking accounts</label>
+    <label class="col-2 col-form-label">Checking account</label>
     <mat-form-field appearance="fill" class="col-8 col-form-label">
-      <mat-label>Checking accounts</mat-label>
-      <mat-select formControlName="checking_accounts" placeholder="- -" required>
+      <mat-label>Checking account</mat-label>
+      <mat-select formControlName="Checking account" placeholder="- -" required>
         <mat-option>--</mat-option>
-        <mat-option value="unknown">Unknown</mat-option>
+        <mat-option value="n/a">Unknown</mat-option>
         <mat-option value="little">Little</mat-option>
         <mat-option value="moderate">Moderate</mat-option>
         <mat-option value="rich">Rich</mat-option>
       </mat-select>
       
-      <div *ngIf="formulario.controls['checking_accounts'].errors?.required"
+      <div *ngIf="formulario.controls['Checking account'].errors?.required"
             class="form-control-feedback">
-            Please complete filling checking accounts.
+            Please complete filling checking account.
       </div>
     </mat-form-field>
   </div>
@@ -114,11 +114,11 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Credit duration (weeks)</label>
     <div class="col-8">
-      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('duration').valid }"
+      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('Duration').valid }"
       type="number"
       placeholder="Credit duration"
-      formControlName="duration">
-      <div *ngIf="formulario.controls['duration'].errors?.required"
+      formControlName="Duration">
+      <div *ngIf="formulario.controls['Duration'].errors?.required"
             class="form-control-feedback">
             Please complete filling credit duration.
       </div>
@@ -129,7 +129,7 @@
     <label class="col-2 col-form-label">Purpose</label>
     <mat-form-field appearance="fill" class="col-8 col-form-label">
       <mat-label>Purpose</mat-label>
-      <mat-select formControlName="purpose" placeholder="- -" required>
+      <mat-select formControlName="Purpose" placeholder="- -" required>
         <mat-option>--</mat-option>
         <mat-option value="car">Car</mat-option>
         <mat-option value="radio/TV">Radio / TV</mat-option>
@@ -141,7 +141,7 @@
         <mat-option value="vacation/others">Vacation / Others</mat-option>
       </mat-select>
     
-      <div *ngIf="formulario.controls['purpose'].errors?.required"
+      <div *ngIf="formulario.controls['Purpose'].errors?.required"
             class="form-control-feedback">
             Please complete filling purpose.
       </div>

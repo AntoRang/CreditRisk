@@ -11,6 +11,7 @@
 import flask
 import pandas as pd
 import joblib
+import json
 
 #Parameters from the data (mean/std)
 params = joblib.load('params_dt.joblib')
@@ -34,13 +35,23 @@ def z_score(feature,mean,std):
     return new_feature
 
 #Generation of the main page
-@app.route('/<data>',methods=['POST'])
-def Home(data):
+@app.route('/credit-request',methods=['POST'])
+def Home():
     #Data adquisition
     cont=flask.request.json
+    data_structured = {
+        'Age': cont['Age'],
+        'Sex': cont['Sex'],
+        'Housing': cont['Housing'],
+        'Saving accounts': cont['Saving accounts'],
+        'Checking account': cont['Checking account'],
+        'Duration': cont['Duration'],
+        'Purpose': cont['Purpose']
+    }
+    
     #Converting into dataframe and treating data as it
     df = pd.DataFrame()
-    df = df.append(cont, ignore_index=True)
+    df = df.append(data_structured, ignore_index=True)
     #Categorizing data
     df = categorize(df)
     #Standarizing data
@@ -49,7 +60,7 @@ def Home(data):
         std=params['stds'][column]
         df[column]= z_score(df[column],mean,std)
     #Dropping colums no requirind for the ML model
-    df = df.drop(['Job'],axis = 1)
+    # df = df.drop(['Job'],axis = 1)
     #Indexing the order properly
     df = df = df[['Age', 'Sex', 'Housing', 'Saving accounts', 'Checking account', 'Duration', 'Purpose']]
     #Converting to a numpy array
@@ -64,4 +75,5 @@ def Home(data):
     max_credit = params["credit"]['max'][risk_type]
     #Returning the result
     return flask.jsonify({'Risk':risk_type, 'Min. ammount': min_credit, 'Max. ammount': max_credit})
+    # return flask.jsonify({'Status': 200})
 
