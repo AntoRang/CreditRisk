@@ -1,5 +1,5 @@
 <hr>
-<form [formGroup]="formulario" (ngSubmit)="guardar()">
+<form [formGroup]="formulario" >
   <!-- Nombre -->
   <div>
     <div class="form-group row">
@@ -169,7 +169,21 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary">
+      <ng-template #content let-c="close" let-d="dismiss" >
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"> Credit Range </h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p> min ammount: {{min_ammount}} - max ammount: {{max_ammount}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+        </div>
+      </ng-template>
+      <button type="submit" class="btn btn-lg btn-outline-primary" (click)="guardar(content)">
         Guardar
       </button>
     </div>
