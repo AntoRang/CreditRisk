@@ -1,34 +1,14 @@
 <hr>
-<form [formGroup]="formulario" >
-  <!-- Nombre -->
-  <div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
-        <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('nombre').valid }"
-        type="text"
-        placeholder="Nombre"
-        formControlName="nombre">
-        <div *ngIf="formulario.controls['nombre'].errors?.required"
-              class="form-control-feedback">
-              Por favor complete el nombre.
-        </div>
-        <div *ngIf="formulario.controls['nombre'].errors?.minlength"
-              class="form-control-feedback">
-              El nombre debe contener minimo 8 caracteres.
-        </div>
-      </div>
-    </div>
-  </div>
+<form [formGroup]="formularioEjecutivo" >
   <!-- Age -->
   <div class="form-group row">
     <label class="col-2 col-form-label">Edad</label>
     <div class="col-8">
-      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('Age').valid }"
+      <input class="form-control" [ngClass]="{ 'is-invalid': !formularioEjecutivo.get('Age').valid }"
       type="number"
       placeholder="Edad"
       formControlName="Age">
-      <div *ngIf="formulario.controls['Age'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Age'].errors?.required"
             class="form-control-feedback">
             Por favor complete la edad.
       </div>
@@ -45,7 +25,7 @@
         <mat-option value="female">Mujer</mat-option>
         <mat-option value="male">Hombre</mat-option>
       </mat-select>
-      <div *ngIf="formulario.controls['Sex'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Sex'].errors?.required"
             class="form-control-feedback">
             Por favor complete el Sexo.
       </div>
@@ -64,7 +44,7 @@
         <mat-option value="free">Gratis</mat-option>
         <mat-option value="rent">Renta</mat-option>
       </mat-select>
-      <div *ngIf="formulario.controls['Housing'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Housing'].errors?.required"
             class="form-control-feedback">
             Por favor complete Alojamiento.
       </div>
@@ -85,7 +65,7 @@
         <mat-option value="quite rich">Bastante rico</mat-option>
       </mat-select>
       
-      <div *ngIf="formulario.controls['Saving accounts'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Saving accounts'].errors?.required"
             class="form-control-feedback">
             Por favor complete Cuenta de ahorros.
       </div>
@@ -104,7 +84,7 @@
         <mat-option value="rich">Bastante</mat-option>
       </mat-select>
       
-      <div *ngIf="formulario.controls['Checking account'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Checking account'].errors?.required"
             class="form-control-feedback">
             Por favor complete la Cuenta de cheques.
       </div>
@@ -114,11 +94,11 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Duración crédito (semanas)</label>
     <div class="col-8">
-      <input class="form-control" [ngClass]="{ 'is-invalid': !formulario.get('Duration').valid }"
+      <input class="form-control" [ngClass]="{ 'is-invalid': !formularioEjecutivo.get('Duration').valid }"
       type="number"
       placeholder="Duración crédito"
       formControlName="Duration">
-      <div *ngIf="formulario.controls['Duration'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Duration'].errors?.required"
             class="form-control-feedback">
             Por favor complete la duración del credito.
       </div>
@@ -141,30 +121,14 @@
         <mat-option value="vacation/others">Vacaciones / Otros</mat-option>
       </mat-select>
     
-      <div *ngIf="formulario.controls['Purpose'].errors?.required"
+      <div *ngIf="formularioEjecutivo.controls['Purpose'].errors?.required"
             class="form-control-feedback">
             Por favor complete el proposito.
       </div>
     </mat-form-field>
       
   </div>
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Correo Electrónico</label>
-    <div class="col-md-8">
-      <input class="form-control"  [ngClass]="{ 'is-invalid': !formulario.get('correoElectronico').valid }"
-      type="email"
-      placeholder="Correo Electrónico"
-      formControlName="correoElectronico">
-      <div *ngIf="formulario.controls['correoElectronico'].errors?.required"
-            class="form-control-feedback">
-            Por favor indique correo electronico
-      </div>
-      <div *ngIf="formulario.controls['correoElectronico'].errors?.pattern"
-            class="form-control-feedback">
-            Debe de seguir un patron especifico
-      </div>
-    </div>
-  </div>
+  
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
@@ -177,10 +141,11 @@
           </button>
         </div>
         <div class="modal-body">
-          
-          <p class="text-center"> Tu rango de crédito es de: </p>
+          <p class="text-center"> El rango de crédito es de: </p>
           <p class="text-center font-weight-bold"> {{min_ammount | currency:'USD':true:'3.0-0'}} a {{max_ammount | currency:'USD':true:'3.0-0'}}</p>
-          
+          <p class="text-center"> Tiene un riesgo: </p>
+          <p class="text-center font-weight-bold"> {{risk}} </p>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
