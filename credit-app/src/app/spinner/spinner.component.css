@@ -26,14 +26,14 @@
     
 }
 
-.penguin-spinner {
+.cerdito-spinner {
     width: 20%;
     height: 20%;
     position: fixed;
     top: 40%;
     left: calc(50% - 10%);
     z-index: 100;
-    background-image: url(../../assets/penguin.png);
+    background-image: url(../../assets/cerdito.png);
     background-repeat: no-repeat;
     background-size: 97%;
     animation: bouncing 0.4s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite
