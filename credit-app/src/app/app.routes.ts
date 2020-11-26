@@ -6,6 +6,7 @@ import { EjecutivoComponent } from './componentes/ejecutivo/ejecutivo.component'
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
 import { FormularioEjecutivoComponent } from './componentes/formulario-ejecutivo/formulario-ejecutivo.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 
 const APP_ROUTES: Routes = [
@@ -15,6 +16,7 @@ const APP_ROUTES: Routes = [
   { path: 'ejecutivo', component: EjecutivoComponent },
   { path: 'cliente', component: ClienteComponent },
   { path: 'cliente/formulario', component: FormularioComponent},
+  { path: 'login', component: LoginComponent },
   { path: 'ejecutivo/formulario-ejecutivo', component: FormularioEjecutivoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'principal' }
 

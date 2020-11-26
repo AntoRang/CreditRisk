@@ -17,6 +17,7 @@ import { EjecutivoComponent } from './componentes/ejecutivo/ejecutivo.component'
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { APP_ROUTING } from './app.routes';
 import { FormularioEjecutivoComponent } from './componentes/formulario-ejecutivo/formulario-ejecutivo.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormularioEjecutivoComponent } from './componentes/formulario-ejecutivo
     PrincipalComponent,
     EjecutivoComponent,
     ClienteComponent,
-    FormularioEjecutivoComponent
+    FormularioEjecutivoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
